@@ -28,6 +28,8 @@ body {
     opacity: 0.65;
 }
 
+
+
 /* 태블릿 (768px 이하) */
 @media (max-width: 768px) {
     .Main-Title {
