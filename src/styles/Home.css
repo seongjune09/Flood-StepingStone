@@ -20,12 +20,10 @@ body {
 
 .Main-Title span:nth-child(1) {
     color: #75A1E7;
-    opacity: 0.6;
 }
 
 .Main-Title span:nth-child(2) {
-    color: #A39B9B;
-    opacity: 0.65;
+    color: #808080;
 }
 
 
