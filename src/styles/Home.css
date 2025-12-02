@@ -30,13 +30,11 @@ body {
     width: 100%;
     overflow: hidden;
     position: relative;
-    margin-top: 100px;
-    margin-bottom: 20px;
 }
 
 .Flood-wrapper {
     display: inline-flex;
-    animation: slideLeft 80s linear infinite;
+    animation: slideLeft  80s linear infinite;
     will-change: transform;
     white-space: nowrap;
 }
@@ -95,7 +93,7 @@ body {
     }
 
     .Flood-wrapper {
-        animation: slideLeft 80s linear infinite;
+        animation: slideLeft 90s linear infinite;
     }
 
     .Flood-container {

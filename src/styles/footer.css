@@ -21,8 +21,9 @@ body {
     padding: 0.1rem;
     position: fixed;
     bottom: 0;
-    left: 0;
-    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
     background-color: white;
     border-top: 1px solid rgba(163, 155, 155, 0.3);
 }
@@ -36,6 +37,11 @@ body {
     margin-top : 1rem;
 }
 
+.Car-On {
+    width : 4.5rem;
+    margin-top : 1rem;
+}
+
 .Setting-Off {
     width : 3rem;
     margin-top : 0.5rem;
@@ -43,4 +49,5 @@ body {
 
 .Bell-Off {
     width : 3.3rem;
+    margin-right : 0.5rem;
 }

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import '../styles/Home.css'
 import '../styles/footer.css'
 import '../styles/modal.css'
@@ -6,6 +7,19 @@ import '../styles/modal.css'
 
 function Home() {
     const [showModal, setShowModal] = useState(true)
+    const navigate = useNavigate()
+
+    const handleCarClick = () => {
+        navigate('/waterlevel')
+    }
+
+    const handleBellClick = () => {
+        navigate('/waterlevel')
+    }
+
+    const handleSettingClick = () => {
+        navigate('/waterlevel')
+    }
 
     return (
         <>
@@ -70,9 +84,9 @@ function Home() {
             </div>
 
             <footer className = "footer-container">
-                <img className="Car-Off" src="/Car-Off.svg" />
-                <img className="Bell-Off" src="/Bell-Off.svg" />
-                <img className="Setting-Off" src="/Setting-Off.svg" />
+                <img className="Car-Off" src="/Car-Off.svg" onClick={handleCarClick} style={{cursor: 'pointer'}} />
+                <img className="Bell-Off" src="/Bell-Off.svg" onClick={handleBellClick} style={{cursor: 'pointer'}} />
+                <img className="Setting-Off" src="/Setting-Off.svg" onClick={handleSettingClick} style={{cursor: 'pointer'}} />
             </footer>
         </>
     )
