@@ -47,7 +47,17 @@ body {
     margin-top : 0.5rem;
 }
 
+.Setting-On {
+    width : 3rem;
+    margin-top : 0.5rem;
+}
+
 .Bell-Off {
+    width : 3.3rem;
+    margin-right : 0.5rem;
+}
+
+.Bell-On {
     width : 3.3rem;
     margin-right : 0.5rem;
 }

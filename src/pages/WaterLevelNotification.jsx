@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom'
-import '../styles/WaterLevel.css'
+import '../styles/WaterLevelNotification.css'
 import '../styles/footer.css'
 
-function WaterLevel() {
+function WaterLevelNiotification() {
     const navigate = useNavigate()
 
-    const handleBellClick = () => {
-        navigate('/water-level-notification')
+    const handleCarClick = () => {
+        navigate('/water-level')
     }
 
     const handleSettingClick = () => {
@@ -15,15 +15,15 @@ function WaterLevel() {
 
     return (
         <>
-            <h1>현재 내 차 수위</h1>
+            <h1>내 차 알림</h1>
 
             <footer className="footer-container">
-                <img className="Car-On" src="/Car-On.svg" />
-                <img className="Bell-Off" src="/Bell-Off.svg" onClick={handleBellClick} />
+                <img className="Car-On" src="/Car-Off.svg" onClick={handleCarClick} />
+                <img className="Bell-Off" src="/Bell-On.svg" />
                 <img className="Setting-Off" src="/Setting-Off.svg" onClick={handleSettingClick} />
             </footer>
         </>
     )
 }
 
-export default WaterLevel
+export default WaterLevelNiotification

@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import '../styles/Home.css'
 import '../styles/footer.css'
 import '../styles/modal.css'
+import '../styles/WaterLevel.css'
+import '../styles/WaterLevelNotification.css'
+import '../styles/Setting.css'
 
 
 function Home() {
@@ -10,15 +13,15 @@ function Home() {
     const navigate = useNavigate()
 
     const handleCarClick = () => {
-        navigate('/waterlevel')
+        navigate('/water-level')
     }
 
     const handleBellClick = () => {
-        navigate('/waterlevel')
+        navigate('/water-level-notification')
     }
 
     const handleSettingClick = () => {
-        navigate('/waterlevel')
+        navigate('/setting')
     }
 
     return (
@@ -84,9 +87,9 @@ function Home() {
             </div>
 
             <footer className = "footer-container">
-                <img className="Car-Off" src="/Car-Off.svg" onClick={handleCarClick} style={{cursor: 'pointer'}} />
-                <img className="Bell-Off" src="/Bell-Off.svg" onClick={handleBellClick} style={{cursor: 'pointer'}} />
-                <img className="Setting-Off" src="/Setting-Off.svg" onClick={handleSettingClick} style={{cursor: 'pointer'}} />
+                <img className="Car-Off" src="/Car-Off.svg" onClick={handleCarClick} />
+                <img className="Bell-Off" src="/Bell-Off.svg" onClick={handleBellClick} />
+                <img className="Setting-Off" src="/Setting-Off.svg" onClick={handleSettingClick} />
             </footer>
         </>
     )
