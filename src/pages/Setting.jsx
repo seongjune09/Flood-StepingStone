@@ -16,6 +16,10 @@ function Setting() {
         navigate('/water-level-notification')
     }
 
+    const handleSettingClick = () => {
+        navigate('/')
+    }
+
     return (
         <>
             <h1>설정</h1>
@@ -23,7 +27,7 @@ function Setting() {
             <footer className="footer-container">
             <img className="Car-Off" src="/Car-Off.svg" onClick={handleCarClick} />
                 <img className="Bell-Off" src="/Bell-Off.svg" onClick={handleBellClick} />
-                <img className="Setting-On" src="/Setting-On.svg" />
+                <img className="Setting-On" src="/Setting-On.svg" onClick={handleSettingClick}/>
             </footer>
         </>
     )

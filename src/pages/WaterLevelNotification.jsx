@@ -9,6 +9,10 @@ function WaterLevelNiotification() {
         navigate('/water-level')
     }
 
+    const handleBellClick = () => {
+        navigate('/')
+    }
+
     const handleSettingClick = () => {
         navigate('/setting')
     }
@@ -19,7 +23,7 @@ function WaterLevelNiotification() {
 
             <footer className="footer-container">
                 <img className="Car-On" src="/Car-Off.svg" onClick={handleCarClick} />
-                <img className="Bell-Off" src="/Bell-On.svg" />
+                <img className="Bell-Off" src="/Bell-On.svg" onClick={handleBellClick}/>
                 <img className="Setting-Off" src="/Setting-Off.svg" onClick={handleSettingClick} />
             </footer>
         </>

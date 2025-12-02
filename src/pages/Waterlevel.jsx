@@ -5,6 +5,10 @@ import '../styles/footer.css'
 function WaterLevel() {
     const navigate = useNavigate()
 
+    const handleCarClick = () => {
+        navigate('/')
+    }
+
     const handleBellClick = () => {
         navigate('/water-level-notification')
     }
@@ -18,7 +22,7 @@ function WaterLevel() {
             <h1>현재 내 차 수위</h1>
 
             <footer className="footer-container">
-                <img className="Car-On" src="/Car-On.svg" />
+                <img className="Car-On" src="/Car-On.svg" onClick={handleCarClick}/>
                 <img className="Bell-Off" src="/Bell-Off.svg" onClick={handleBellClick} />
                 <img className="Setting-Off" src="/Setting-Off.svg" onClick={handleSettingClick} />
             </footer>
