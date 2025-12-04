@@ -20,8 +20,8 @@ function WaterLevel() {
     return (
         <>
             <h1 className="Page-Title">
-                <span className="highlight-blue">현재</span>
-                <span> 내 차 수위</span>
+                <span className="highlight-gray">현재 차 수위</span>
+                <span className="highlight-blue"> 시각화</span>
             </h1>
 
             <footer className="footer-container">

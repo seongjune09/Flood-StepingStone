@@ -20,7 +20,7 @@ function WaterLevelNiotification() {
     return (
         <>
             <h1 className="Page-Title">
-                <span>내 차 </span>
+                <span className="highlight-gray">내 차 </span>
                 <span className="highlight-blue">알림</span>
             </h1>
 

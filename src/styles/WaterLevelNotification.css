@@ -4,8 +4,12 @@
 
 .Page-Title {
     text-align: center;
-    font-size: 50px;
+    font-size: 30px;
     margin-top: 30px;
+}
+
+.highlight-gray{
+    color: #808080;
 }
 
 .highlight-blue {
