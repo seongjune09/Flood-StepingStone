@@ -19,7 +19,10 @@ function WaterLevel() {
 
     return (
         <>
-            <h1>현재 내 차 수위</h1>
+            <h1 className="Page-Title">
+                <span className="highlight-blue">현재</span>
+                <span> 내 차 수위</span>
+            </h1>
 
             <footer className="footer-container">
                 <img className="Car-On" src="/Car-On.svg" onClick={handleCarClick}/>

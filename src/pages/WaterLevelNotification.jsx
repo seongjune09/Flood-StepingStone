@@ -19,7 +19,10 @@ function WaterLevelNiotification() {
 
     return (
         <>
-            <h1>내 차 알림</h1>
+            <h1 className="Page-Title">
+                <span>내 차 </span>
+                <span className="highlight-blue">알림</span>
+            </h1>
 
             <footer className="footer-container">
                 <img className="Car-On" src="/Car-Off.svg" onClick={handleCarClick} />

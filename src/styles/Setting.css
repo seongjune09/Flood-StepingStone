@@ -1,3 +1,13 @@
 .Setting-Off {
     cursor: pointer;
 }
+
+.Page-Title {
+    text-align: center;
+    font-size: 50px;
+    margin-top: 30px;
+}
+
+.highlight-blue {
+    color: #75A1E7;
+}

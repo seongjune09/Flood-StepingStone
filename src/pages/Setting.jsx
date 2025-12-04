@@ -22,7 +22,9 @@ function Setting() {
 
     return (
         <>
-            <h1>설정</h1>
+            <h1 className="Page-Title">
+                <span className="highlight-blue">설정</span>
+            </h1>
 
             <footer className="footer-container">
             <img className="Car-Off" src="/Car-Off.svg" onClick={handleCarClick} />
