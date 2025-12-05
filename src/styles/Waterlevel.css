@@ -15,3 +15,14 @@
 .highlight-blue {
     color: #75A1E7;
 }
+
+.water-level-image-container {
+    display: flex;
+    justify-content: center;
+    margin: 120px 0 20px 0;
+}
+
+.water-level-image {
+    width: 100%;
+    max-width: 400px;
+}

@@ -24,6 +24,10 @@ function WaterLevel() {
                 <span className="highlight-blue"> 시각화</span>
             </h1>
 
+            <div className="water-level-image-container">
+                <img src="water-level0.png" className="water-level-image" />
+            </div>
+
             <footer className="footer-container">
                 <img className="Car-On" src="/Car-On.svg" onClick={handleCarClick}/>
                 <img className="Bell-Off" src="/Bell-Off.svg" onClick={handleBellClick} />
