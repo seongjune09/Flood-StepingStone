@@ -1,28 +1,13 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import Footer from '../components/Footer'
 import '../styles/Home.css'
-import '../styles/footer.css'
 import '../styles/modal.css'
 import '../styles/WaterLevel.css'
 import '../styles/WaterLevelNotification.css'
 import '../styles/Setting.css'
 
-
 function Home() {
     const [showModal, setShowModal] = useState(true)
-    const navigate = useNavigate()
-
-    const handleCarClick = () => {
-        navigate('/water-level')
-    }
-
-    const handleBellClick = () => {
-        navigate('/water-level-notification')
-    }
-
-    const handleSettingClick = () => {
-        navigate('/setting')
-    }
 
     return (
         <>
@@ -86,11 +71,7 @@ function Home() {
                 </div>
             </div>
 
-            <footer className = "footer-container">
-                <img className="Car-Off" src="/Car-Off.svg" onClick={handleCarClick} />
-                <img className="Bell-Off" src="/Bell-Off.svg" onClick={handleBellClick} />
-                <img className="Setting-Off" src="/Setting-Off.svg" onClick={handleSettingClick} />
-            </footer>
+            <Footer currentPage="home" />
         </>
     )
 }
