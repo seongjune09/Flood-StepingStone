@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react'
 import '../styles/WaterLevelNotification.css'
 import '../styles/footer.css'
 
-// Mock 모드 설정
-const MOCK_MODE = true
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api'
+const MOCK_MODE = import.meta.env.VITE_MOCK_MODE === 'true'
 
 function WaterLevelNiotification() {
     const navigate = useNavigate()
@@ -12,30 +12,42 @@ function WaterLevelNiotification() {
 
     // 알림 데이터 폴링
     useEffect(() => {
-        const fetchNotifications = async () => {
-            if (MOCK_MODE) {
-                // Mock 모드: localStorage에서 알림 가져오기
-                const storedNotifications = JSON.parse(localStorage.getItem('notifications') || '[]')
-                setNotifications(storedNotifications)
-            } else {
-                // 실제 API 호출
-                try {
-                    const response = await fetch('http://localhost:8080/api/notifications')
-                    const data = await response.json()
-                    setNotifications(data)
-                } catch (error) {
-                    console.error('알림 데이터를 가져오는데 실패했습니다:', error)
-                }
+        const updateReadPointers = (items = []) => {
+            if (!items.length) {
+                return
+            }
+            const maxLogId = items.reduce(
+                (max, item) => Math.max(max, item.log_id ?? 0),
+                0
+            )
+            if (maxLogId > 0) {
+                localStorage.setItem('latestLogId', String(maxLogId))
+                localStorage.setItem('lastReadLogId', String(maxLogId))
             }
         }
 
-        // 알림 페이지 진입 시 읽음 처리
-        localStorage.setItem('lastReadTime', Date.now().toString())
+        const fetchNotifications = async () => {
+            if (MOCK_MODE) {
+                const storedNotifications = JSON.parse(localStorage.getItem('notifications') || '[]')
+                setNotifications(storedNotifications)
+                updateReadPointers(storedNotifications)
+                return
+            }
 
-        // 초기 데이터 가져오기
+            try {
+                const response = await fetch(`${API_BASE_URL}/notifications`)
+                if (!response.ok) {
+                    throw new Error('알림 조회 실패')
+                }
+                const data = await response.json()
+                setNotifications(data)
+                updateReadPointers(data)
+            } catch (error) {
+                console.error('알림 데이터를 가져오는데 실패했습니다:', error)
+            }
+        }
+
         fetchNotifications()
-
-        // 1초마다 알림 데이터 폴링 (실시간 업데이트)
         const interval = setInterval(fetchNotifications, 1000)
         return () => clearInterval(interval)
     }, [])
@@ -58,25 +70,25 @@ function WaterLevelNiotification() {
             case 1:
                 return {
                     icon: '⚠️',
-                    message: '위험! 물이 감지되었습니다!',
-                    color: '#FFA500'
+                    message: '경고! 물이 감지되었습니다!',
+                    color: '#97e476'
                 }
             case 2:
                 return {
                     icon: '🚨',
-                    message: '위험! 안전벨트를 풀고 탈출을 준비하십시오!',
-                    color: '#FF4444'
+                    message: '위험! 바퀴까지 물이차올랐습니다. 안전벨트를 풀고 탈출을 준비하십시오!',
+                    color: '#ffbd59'
                 }
             case 3:
                 return {
-                    icon: '🚨🚨',
-                    message: '경고! 5초간 물이 감지되어 창문이 자동으로 열립니다!',
-                    color: '#CC0000'
+                    icon: '🚨',
+                    message: '탈출하세요! 5초간 물이 감지되어 창문이 자동으로 열립니다!',
+                    color: '#ff5757'
                 }
             default:
                 return {
-                    icon: 'ℹ️',
-                    message: '알림',
+                    icon: '💧❌',
+                    message: '현재 물이 감지되지 않았습니다.',
                     color: '#4A90E2'
                 }
         }
@@ -120,7 +132,10 @@ function WaterLevelNiotification() {
                                             {formatDate(notification.created_at)}
                                         </span>
                                     </div>
-                                    <div className="notification-message">
+                                    <div
+                                        className="notification-message"
+                                        style={{ color: info.color }}
+                                    >
                                         {info.message}
                                     </div>
                                     {notification.status && (
@@ -137,7 +152,7 @@ function WaterLevelNiotification() {
 
             <footer className="footer-container">
                 <img className="Car-On" src="/Car-Off.svg" onClick={handleCarClick} />
-                <img className="Bell-Off" src="/Bell-On.svg" onClick={handleBellClick}/>
+                <img className="Bell-Off" src="/Bell-On.svg" onClick={handleBellClick} />
                 <img className="Setting-Off" src="/Setting-Off.svg" onClick={handleSettingClick} />
             </footer>
         </>

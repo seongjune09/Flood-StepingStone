@@ -1,15 +1,20 @@
 import { useState, useEffect, useRef } from 'react'
 import Footer from '../components/Footer'
 import '../styles/WaterLevel.css'
-
-// Mock 모드 설정 (백엔드 준비되면 false로 변경)
-const MOCK_MODE = true
+import { fetchCurrentStatus, createNotification, MOCK_MODE } from '../api/waterLevelApi'
 
 function WaterLevel() {
     const [sensor1Active, setSensor1Active] = useState(false)
     const [sensor2Active, setSensor2Active] = useState(false)
     const [bothSensorsStartTime, setBothSensorsStartTime] = useState(null)
     const bothSensorsTimeoutRef = useRef(null)
+    const [currentStage, setCurrentStage] = useState(0) // 현재 수위 단계 (0, 1, 2, 3)
+
+    // currentStage 변경 시 로그
+    useEffect(() => {
+        console.log('🌊 현재 수위 단계 변경됨:', currentStage)
+        console.log('📸 표시될 이미지:', `water-level${currentStage}.png`)
+    }, [currentStage])
 
     // 새로고침 시에만 알림 초기화
     useEffect(() => {
@@ -27,80 +32,41 @@ function WaterLevel() {
         }
     }, [])
 
-    // 센서 데이터 폴링
+    // 현재 수위 단계 조회 (API 호출)
     useEffect(() => {
-        const fetchSensorData = async () => {
+        const getCurrentStatus = async () => {
             if (MOCK_MODE) {
-                // Mock 모드: 여기서는 수동으로 센서 상태를 변경하므로 아무것도 하지 않음
+                // Mock 모드에서는 센서 상태에 따라 stage 계산
+                if (sensor1Active && sensor2Active) {
+                    setCurrentStage(3)
+                } else if (sensor2Active) {
+                    setCurrentStage(2)
+                } else if (sensor1Active) {
+                    setCurrentStage(1)
+                } else {
+                    setCurrentStage(0)
+                }
                 return
             }
 
-            try {
-                // 센서 1 데이터 가져오기
-                const response1 = await fetch('http://localhost:8080/api/logs/latest?sensor_id=1')
-                const data1 = await response1.json()
-
-                // 센서 2 데이터 가져오기
-                const response2 = await fetch('http://localhost:8080/api/logs/latest?sensor_id=2')
-                const data2 = await response2.json()
-
-                // 센서 1: value가 1이면 물 감지
-                const isSensor1Detected = data1.value === 1
-                // 센서 2: value가 1이면 물 감지
-                const isSensor2Detected = data2.value === 1
-
-                setSensor1Active(isSensor1Detected)
-                setSensor2Active(isSensor2Detected)
-
-            } catch (error) {
-                console.error('센서 데이터를 가져오는데 실패했습니다:', error)
-            }
+            // 실제 API 호출
+            const data = await fetchCurrentStatus()
+            setCurrentStage(data.stage || 0)
         }
 
         // 초기 데이터 가져오기
-        fetchSensorData()
+        getCurrentStatus()
 
-        // 2초마다 센서 데이터 폴링
-        const interval = setInterval(fetchSensorData, 2000)
+        if (!MOCK_MODE) {
+            // 실제 모드에서는 2초마다 상태 폴링
+            const interval = setInterval(getCurrentStatus, 2000)
+            return () => clearInterval(interval)
+        }
+    }, [sensor1Active, sensor2Active])
 
-        return () => clearInterval(interval)
-    }, [])
 
     // 센서 상태에 따른 알림 생성
     useEffect(() => {
-        const createNotification = async (stage) => {
-            if (MOCK_MODE) {
-                // Mock 모드: localStorage에 알림 저장
-                const notifications = JSON.parse(localStorage.getItem('notifications') || '[]')
-                const newNotification = {
-                    log_id: Date.now(),
-                    stage: stage,
-                    status: stage === 3 ? 'critical' : 'warning',
-                    created_at: new Date().toISOString()
-                }
-                notifications.unshift(newNotification) // 최신 알림을 맨 위에
-                localStorage.setItem('notifications', JSON.stringify(notifications))
-                console.log('알림 생성:', newNotification)
-            } else {
-                // 실제 API 호출
-                try {
-                    await fetch('http://localhost:8080/api/notifications', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            sensor_id: stage === 1 ? 1 : 2,
-                            value: 1,
-                            recorded_at: new Date().toISOString(),
-                        }),
-                    })
-                } catch (error) {
-                    console.error('알림 생성 실패:', error)
-                }
-            }
-        }
-
         // 센서 1만 감지된 경우
         if (sensor1Active && !sensor2Active) {
             createNotification(1)
@@ -116,11 +82,9 @@ function WaterLevel() {
             if (!bothSensorsStartTime) {
                 setBothSensorsStartTime(Date.now())
 
-                // 5초 후 창문 열기 알림
+                // 5초 후 경고 알림
                 bothSensorsTimeoutRef.current = setTimeout(async () => {
                     await createNotification(3)
-                    // TODO: 여기에 창문 열기 API 호출 추가
-                    // await fetch('http://localhost:8080/api/window/open', { method: 'POST' })
                 }, 5000)
             }
         } else {
@@ -148,13 +112,39 @@ function WaterLevel() {
             </h1>
 
             <div className="water-level-image-container">
-                <img src="water-level0.png" className="water-level-image" />
+                <img
+                    src={`/water-level${currentStage}.png`}
+                    className="water-level-image"
+                    alt={`수위 단계 ${currentStage}`}
+                />
             </div>
 
-            {/* 센서 상태 표시 */}
-            <div style={{ textAlign: 'center', marginTop: '20px', fontSize: '14px' }}>
-                <p>센서 1: {sensor1Active ? '🟢 감지됨' : '🔵 정상'}</p>
-                <p>센서 2: {sensor2Active ? '🟢 감지됨' : '🔵 정상'}</p>
+            {/* 수위 단계별 경고 메시지 */}
+            <div className="warning-message-container">
+                {currentStage === 0 && (
+                    <div className="warning-message safe">
+                        <span className="warning-icon">🍀</span>
+                        <p className="warning-text">현재 물이 감지되지 않았습니다.</p>
+                    </div>
+                )}
+                {currentStage === 1 && (
+                    <div className="warning-message warning">
+                        <span className="warning-icon">⚠️</span>
+                        <p className="warning-text">경고! 물이 감지되었습니다!</p>
+                    </div>
+                )}
+                {currentStage === 2 && (
+                    <div className="warning-message danger">
+                        <span className="warning-icon">🚨</span>
+                        <p className="warning-text">경고! 바퀴까지 물이 차올랐습니다.<br />안전벨트를 풀고 탈출을 준비하십시오!</p>
+                    </div>
+                )}
+                {currentStage === 3 && (
+                    <div className="warning-message critical">
+                        <span className="warning-icon">🚨</span>
+                        <p className="warning-text">탈출하세요! 5초간 물이 감지되어<br />창문이 자동으로 열립니다!</p>
+                    </div>
+                )}
             </div>
 
             {/* Mock 모드 테스트 버튼 */}
