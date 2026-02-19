@@ -1,7 +1,53 @@
 import { useState, useEffect, useRef } from 'react'
 import Footer from '../components/Footer'
 import '../styles/WaterLevel.css'
-import { fetchCurrentStatus, createNotification, MOCK_MODE } from '../api/waterLevelApi'
+
+// ✅ 여기에 추가!
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api'
+const MOCK_MODE = import.meta.env.VITE_MOCK_MODE === 'true'
+
+// 현재 수위 상태 조회
+const fetchCurrentStatus = async () => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/status`)
+        if (!response.ok) throw new Error('상태 조회 실패')
+        return await response.json()
+    } catch (error) {
+        console.error('상태 조회 실패:', error)
+        return { stage: 0 }
+    }
+}
+
+// 알림 생성 함수
+const createNotification = async (level) => {
+    const notifications = JSON.parse(localStorage.getItem('notifications') || '[]')
+    const latestLogId = parseInt(localStorage.getItem('latestLogId') || '0', 10)
+    
+    const newNotification = {
+        log_id: latestLogId + 1,
+        level: level,
+        message: level === 1 ? '물이 감지되었습니다' : 
+                 level === 2 ? '바퀴까지 물이 차올랐습니다' : 
+                 '창문이 자동으로 열립니다',
+        timestamp: new Date().toISOString()
+    }
+    
+    notifications.unshift(newNotification)
+    localStorage.setItem('notifications', JSON.stringify(notifications))
+    localStorage.setItem('latestLogId', String(latestLogId + 1))
+    
+    if (!MOCK_MODE) {
+        try {
+            await fetch(`${API_BASE_URL}/notifications`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newNotification)
+            })
+        } catch (error) {
+            console.error('알림 전송 실패:', error)
+        }
+    }
+}
 
 function WaterLevel() {
     const [sensor1Active, setSensor1Active] = useState(false)
@@ -146,65 +192,6 @@ function WaterLevel() {
                     </div>
                 )}
             </div>
-
-            {/* Mock 모드 테스트 버튼 */}
-            {MOCK_MODE && (
-                <div style={{
-                    textAlign: 'center',
-                    marginTop: '20px',
-                    display: 'flex',
-                    gap: '10px',
-                    justifyContent: 'center',
-                    flexWrap: 'wrap',
-                    padding: '0 20px'
-                }}>
-                    <button
-                        onClick={() => setSensor1Active(!sensor1Active)}
-                        style={{
-                            padding: '10px 20px',
-                            backgroundColor: sensor1Active ? '#FF4444' : '#4CAF50',
-                            color: 'white',
-                            border: 'none',
-                            borderRadius: '8px',
-                            cursor: 'pointer',
-                            fontSize: '14px'
-                        }}
-                    >
-                        센서 1 {sensor1Active ? 'OFF' : 'ON'}
-                    </button>
-                    <button
-                        onClick={() => setSensor2Active(!sensor2Active)}
-                        style={{
-                            padding: '10px 20px',
-                            backgroundColor: sensor2Active ? '#FF4444' : '#4CAF50',
-                            color: 'white',
-                            border: 'none',
-                            borderRadius: '8px',
-                            cursor: 'pointer',
-                            fontSize: '14px'
-                        }}
-                    >
-                        센서 2 {sensor2Active ? 'OFF' : 'ON'}
-                    </button>
-                    <button
-                        onClick={() => {
-                            setSensor1Active(false)
-                            setSensor2Active(false)
-                        }}
-                        style={{
-                            padding: '10px 20px',
-                            backgroundColor: '#808080',
-                            color: 'white',
-                            border: 'none',
-                            borderRadius: '8px',
-                            cursor: 'pointer',
-                            fontSize: '14px'
-                        }}
-                    >
-                        모두 OFF
-                    </button>
-                </div>
-            )}
 
             <Footer currentPage="water-level" />
         </>

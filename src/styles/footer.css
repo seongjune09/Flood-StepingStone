@@ -14,57 +14,42 @@ body {
 
 
 .footer-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;            /* 추가 */
+    width: 100%;
+    
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 5rem;
-    padding: 0.1rem;
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
+
+    padding: 0.6rem 0;
     background-color: white;
     border-top: 1px solid rgba(163, 155, 155, 0.3);
 }
 
+/* 모든 아이콘 공통 스타일 */
 .footer-container img {
     cursor: pointer;
+    display: block;
 }
 
-.Car-Off {
-    width : 4.5rem;
-    margin-top : 1rem;
-}
-
+/* 크기만 지정하고 margin 제거 */
+.Car-Off,
 .Car-On {
-    width : 4.5rem;
-    margin-top : 1rem;
+    width: 4.5rem;
 }
 
-.Setting-Off {
-    width : 3rem;
-    margin-top : 0.5rem;
-}
-
+.Setting-Off,
 .Setting-On {
-    width : 3rem;
-    margin-top : 0.5rem;
+    width: 3rem;
 }
 
-.Bell-Off {
-    width : 3.3rem;
-    margin-right : 0.5rem;
-}
-
+.Bell-Off,
 .Bell-On {
-    width : 3.3rem;
-    margin-right : 0.5rem;
-}
-
-.bell-wrapper {
-    position: relative;
-    display: inline-block;
+    width: 3.3rem;
 }
 
 .notification-badge {

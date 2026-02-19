@@ -1,7 +1,51 @@
 import { useState, useEffect } from 'react'
 import Footer from '../components/Footer'
 import '../styles/Setting.css'
-import { fetchLedColors, updateLedColor } from '../api/ledApi'
+
+// ✅ 여기에 추가!
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api'
+const MOCK_MODE = import.meta.env.VITE_MOCK_MODE === 'true'
+
+// LED 색상 가져오기
+const fetchLedColors = async () => {
+    if (MOCK_MODE) {
+        return {
+            normal: '#6BCF7F',
+            warning: '#FFD93D',
+            danger: '#FF6B6B'
+        }
+    }
+    
+    try {
+        const response = await fetch(`${API_BASE_URL}/led-colors`)
+        if (!response.ok) throw new Error('LED 색상 조회 실패')
+        return await response.json()
+    } catch (error) {
+        console.error('LED 색상 조회 실패:', error)
+        throw error
+    }
+}
+
+// LED 색상 업데이트
+const updateLedColor = async (stateName, color) => {
+    if (MOCK_MODE) {
+        console.log(`MOCK: LED 색상 업데이트 - ${stateName}: ${color}`)
+        return { success: true }
+    }
+    
+    try {
+        const response = await fetch(`${API_BASE_URL}/led-colors`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ state: stateName, color })
+        })
+        if (!response.ok) throw new Error('LED 색상 업데이트 실패')
+        return await response.json()
+    } catch (error) {
+        console.error('LED 색상 업데이트 실패:', error)
+        throw error
+    }
+}
 
 function Setting() {
     const [selectedLevel, setSelectedLevel] = useState(1) // 현재 선택된 단계
