@@ -20,8 +20,8 @@
 특히 지하 주차장이나 도심 지역(예: 강남)에서는 차량이 순식간에 물에 잠기는 사례가 늘어나면서 운전자들이 미처 대피하지 못해 인명 피해로 이어지는 경우가 많습니다.
 차량은 일정 수위 이상 잠기면 수압으로 인해 문이 열리지 않고, 전원이 차단되면 전동식 창문도 작동하지 않아 탈출이 불가능해집니다.
 
-<img width="500" height="260" alt="image" src="https://github.com/user-attachments/assets/a7c72913-81c7-439f-b88f-b43702ada6b3" />
-<img width="500" height="260" alt="image" src="https://github.com/user-attachments/assets/e077c646-dc06-486f-8891-57a078a1914c" />
+<img width="400" height="260" alt="image" src="https://github.com/user-attachments/assets/a7c72913-81c7-439f-b88f-b43702ada6b3" />
+<img width="400" height="260" alt="image" src="https://github.com/user-attachments/assets/e077c646-dc06-486f-8891-57a078a1914c" />
 
 ---
 
@@ -72,9 +72,9 @@
 ---
 
 - ## (3) 조명 색상 커스텀
-<img width="320" height="612" alt="image" src="https://github.com/user-attachments/assets/f095e2b4-91e3-497b-881d-9ee5ae2dc583" />
-<img width="320" height="612" alt="image" src="https://github.com/user-attachments/assets/77752770-1eca-450f-babb-fe551cf7d6cf" />
-<img width="320" height="612" alt="image" src="https://github.com/user-attachments/assets/32825f47-b93f-494b-8a40-e4c2b58a5a04" />
+<img width="300" height="612" alt="image" src="https://github.com/user-attachments/assets/f095e2b4-91e3-497b-881d-9ee5ae2dc583" />
+<img width="300" height="612" alt="image" src="https://github.com/user-attachments/assets/77752770-1eca-450f-babb-fe551cf7d6cf" />
+<img width="300" height="612" alt="image" src="https://github.com/user-attachments/assets/32825f47-b93f-494b-8a40-e4c2b58a5a04" />
 
 - 설정 페이지에서 현재등 / 경고등 / 위험등 3단계의 색상을 사용자가 직접 원하는 색으로 변경할 수 있습니다. 
 - 기본 색상 외에도 커스텀 색상을 지원하여 개인 취향에 맞게 알림 색상을 설정할 수 있습니다.
@@ -130,11 +130,13 @@
 
 
 # 🔗 배포 링크
-[🌐 홍수디딤이 바로가기](https://hackathon-pointcheck.vercel.app)  *(아이폰 16 반응형 뷰 기준 [399 x 712])*
+[🌐 홍수디딤이 바로가기](https://flood-steping-stone.vercel.app)  *(아이폰 16 반응형 뷰 기준 [399 x 712])*
 
 ⚠️  현재 기기가 구동 중이지 않아 자세한 시연은 영상을 통해 확인해주세요.
 
 ---
 
-# [▶ 시연 영상 확인하기](https://youtu.be/7ze6g8a8b1s)
+# [▶ 웹 시연 영상 확인하기](https://youtu.be/x04e1FFhbAE)
+
+# [▶ 하드웨어 시연 영상 확인하기](https://youtu.be/EBbUkMSjvfs)
 
