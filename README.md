@@ -20,8 +20,8 @@
 특히 지하 주차장이나 도심 지역(예: 강남)에서는 차량이 순식간에 물에 잠기는 사례가 늘어나면서 운전자들이 미처 대피하지 못해 인명 피해로 이어지는 경우가 많습니다.
 차량은 일정 수위 이상 잠기면 수압으로 인해 문이 열리지 않고, 전원이 차단되면 전동식 창문도 작동하지 않아 탈출이 불가능해집니다.
 
-<img width="440" height="260" alt="image" src="https://github.com/user-attachments/assets/a7c72913-81c7-439f-b88f-b43702ada6b3" />
-<img width="440" height="260" alt="image" src="https://github.com/user-attachments/assets/e077c646-dc06-486f-8891-57a078a1914c" />
+<img width="420" height="260" alt="image" src="https://github.com/user-attachments/assets/a7c72913-81c7-439f-b88f-b43702ada6b3" />
+<img width="420" height="260" alt="image" src="https://github.com/user-attachments/assets/e077c646-dc06-486f-8891-57a078a1914c" />
 
 ---
 
