@@ -20,8 +20,8 @@
 특히 지하 주차장이나 도심 지역(예: 강남)에서는 차량이 순식간에 물에 잠기는 사례가 늘어나면서 운전자들이 미처 대피하지 못해 인명 피해로 이어지는 경우가 많습니다.
 차량은 일정 수위 이상 잠기면 수압으로 인해 문이 열리지 않고, 전원이 차단되면 전동식 창문도 작동하지 않아 탈출이 불가능해집니다.
 
-<img width="400" height="260" alt="image" src="https://github.com/user-attachments/assets/a7c72913-81c7-439f-b88f-b43702ada6b3" />
-<img width="400" height="260" alt="image" src="https://github.com/user-attachments/assets/e077c646-dc06-486f-8891-57a078a1914c" />
+<img width="440" height="260" alt="image" src="https://github.com/user-attachments/assets/a7c72913-81c7-439f-b88f-b43702ada6b3" />
+<img width="440" height="260" alt="image" src="https://github.com/user-attachments/assets/e077c646-dc06-486f-8891-57a078a1914c" />
 
 ---
 
@@ -100,6 +100,7 @@
 침수가 일정 수준 이상 진행되면 전원이 차단되어 기존 전동 창문이 작동하지 않습니다. 
 이를 대비해 독립적으로 창문을 물리적으로 개방할 수 있도록 서보모터를 사용했습니다.
 
+---
 
 <img width="500" height="260" alt="image" src="https://github.com/user-attachments/assets/4689303a-97db-48a7-a4d0-b4247831feb9" />
 <img width="500" height="260" alt="image" src="https://github.com/user-attachments/assets/50d51a2b-c6a5-4696-9e3a-7add5d9c7bf6" />
