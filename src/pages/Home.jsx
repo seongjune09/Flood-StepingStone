@@ -2,9 +2,6 @@ import { useState } from 'react'
 import Footer from '../components/Footer'
 import '../styles/Home.css'
 import '../styles/modal.css'
-import '../styles/WaterLevel.css'
-import '../styles/WaterLevelNotification.css'
-import '../styles/Setting.css'
 
 function Home() {
     const [showModal, setShowModal] = useState(true)
@@ -53,8 +50,6 @@ function Home() {
                         <img className="Flood-image" src="/Flood2.png" alt="Flood" />
                         <img className="Flood-image" src="/Flood1.png" alt="Flood" />
                         <img className="Flood-image" src="/Flood2.png" alt="Flood" />
-
-
                     </div>
                     <div className="Flood-group">
                         <img className="Flood-image" src="/Flood2.png" alt="Flood" />
