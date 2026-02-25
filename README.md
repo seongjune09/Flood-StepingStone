@@ -14,7 +14,7 @@
 
 ---
 
-# 🔍 문제상황
+# 문제상황
 
 최근 기후 변화로 인해 집중호우와 도시 침수 사고가 빈번하게 발생하고 있습니다.
 특히 지하 주차장이나 도심 지역(예: 강남)에서는 차량이 순식간에 물에 잠기는 사례가 늘어나면서 운전자들이 미처 대피하지 못해 인명 피해로 이어지는 경우가 많습니다.
@@ -25,7 +25,7 @@
 
 ---
 
-# ‼️ 기존 탈출 방법
+# 기존 탈출 방법
 <img width="973" height="426" alt="image" src="https://github.com/user-attachments/assets/b170da54-e97f-450b-9e06-f61b29f1ed0a" />
 
 기존의 탈출 방법에는 비상 망치, 혹은 목 받침대를 뽑아 유리창 모서리를 깨고 탈출하는 방법이 있습니다.
@@ -34,16 +34,16 @@
 
 ---
 
-# ✔️ 프로젝트 소개
+# 프로젝트 소개
 
-# (1) ⛳️ 목적
+# (1) 목적
 - 위의 문제를 해결하기 위해, 차량이 물에 잠기기 시작할 때 배터리가 완전히 침수되기 전에 창문을 자동으로 열어주는 시스템을 고안하게 되었습니다.
 - 운전자가 침수 상황에서도 신속히 탈출할 수 있도록 도와 홍수 시 발생하는 인명 피해를 최소화하는 것이 이 프로젝트의 핵심 목적입니다.
 
 
 ---
 
-# (2) ⚙️ 동작 원리
+# (2) 동작 원리
 <img width="1123" height="449" alt="image" src="https://github.com/user-attachments/assets/4d827a71-d91d-4ddd-870e-f095ab8ff481" />
 
 - 차량 하부에는 총 2개의 워터 센서가 **서로 다른 높이**에 설치되어 침수 단계를 구분할 수 있도록 설계했습니다.
@@ -53,8 +53,8 @@
 
 ---
 
-# (3)주요 기능
-- ## (1) 침수 감지 및 실시간 시각화
+# (3) 주요 기능
+- ## 1. 침수 감지 및 실시간 시각화
 <img width="708" height="445" alt="image" src="https://github.com/user-attachments/assets/891c29d0-6ce2-4b60-bb23-2f4e9f2ca951" />
 
 - 두 센서의 상태를 바탕으로 웹페이지에서 차량이 어느 정도까지 잠겼는지를 이미지로 직관적으로 표시합니다.
@@ -63,7 +63,7 @@
 
 ---
 
-- ## (2) 침수 단계 알림 및 기록
+- ## 2. 침수 단계 알림 및 기록
 <img width="625" height="461" alt="image" src="https://github.com/user-attachments/assets/7a1f4d57-60f6-4bbb-a82b-aec06f62e799" />
 
 - 워터 센서를 통해 침수 단계가 변화하면 해당 시간과 침수 단계를 알림으로 전송합니다.
@@ -71,7 +71,7 @@
 
 ---
 
-- ## (3) 조명 색상 커스텀
+- ## 3. 조명 색상 커스텀
 <img width="270" height="612" alt="image" src="https://github.com/user-attachments/assets/f095e2b4-91e3-497b-881d-9ee5ae2dc583" />
 <img width="270" height="612" alt="image" src="https://github.com/user-attachments/assets/77752770-1eca-450f-babb-fe551cf7d6cf" />
 <img width="270" height="612" alt="image" src="https://github.com/user-attachments/assets/32825f47-b93f-494b-8a40-e4c2b58a5a04" />
@@ -81,7 +81,7 @@
 
 ---
 
-# ⚙️ 하드웨어 구성
+# 하드웨어 구성
 <img width="778" height="254" alt="image" src="https://github.com/user-attachments/assets/20ed4e9c-20d0-486b-957d-2d734d72cd32" />
 
 ## 워터 센서 
@@ -107,14 +107,14 @@
 
 ---
 
-# 👍🏻 배운 점 및 느낀 점
+# 배운 점 및 느낀 점
 - 네트워크 시간에 진행한 이번 프로젝트는 저에게 정말 의미 있는 경험이었습니다. 초기 아이디어 선정 단계에서 팀원을 설득해 프로젝트 방향을 이끌었던 만큼, 잘 따라와 줄지에 대한 걱정과 내가 더 열심히 해야 한다는 부담감도 함께 있었습니다.
   개발 기간 2주 동안 좀처럼 진전이 없어 제출 전날까지도 불안함이 있었습니다. 결국 제출 5일 전, 기숙사에서 밤을 새우며 하드웨어 연결에 성공했고 그 순간은 정말 잊지 못할 기억으로 남아 있습니다.
   이번 프로젝트를 통해 하드웨어의 구성과 동작 원리를 직접 익힐 수 있었고, 팀원과 함께 협업하는 것에 대한 두려움도 사라졌습니다. 무엇보다 네트워크 프로젝트에서 2등으로 수상하는 결과까지 얻어 더욱 뿌듯하고 기쁜 프로젝트였습니다.
 
 ---
 
-# 👥 팀원 소개
+# 팀원 소개
 
 |[강준석](https://github.com/Kangjunseok09)|[박성준](https://github.com/seongjune09)
 |:---:|:---:|
@@ -123,14 +123,14 @@
 
 ---
 
-# 🛠 기술 스택
+# 기술 스택
 
 <img height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/fastapi/fastapi-original.svg" />   <img height="60" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" />   <img height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" />  <img height="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/raspberrypi/raspberrypi-original.svg" />
 
 ---
 
 
-# 🔗 배포 링크
+# 배포 링크
 [🌐 홍수디딤이 바로가기](https://flood-steping-stone.vercel.app)  *(아이폰 16 반응형 뷰 기준 [399 x 712])*
 
 ⚠️  현재 기기가 구동 중이지 않아 자세한 시연은 영상을 통해 확인해주세요.
