@@ -1,6 +1,5 @@
 # 💧 홍수디딤이
-<img width="300" height="624" alt="image" src="https://github.com/user-attachments/assets/b6e4132a-0242-4ee5-b92a-82ae5aa4a1a9" />
-<img width="300" height="617" alt="image" src="https://github.com/user-attachments/assets/d1956ace-e032-4e76-b9ea-a77bc29e0fbc" /> <br>
+<img width="693" height="527" alt="image" src="https://github.com/user-attachments/assets/17268265-4ebe-43b2-9bde-d9676ec09bcd" />
 
 
  <br>
@@ -72,9 +71,10 @@
 ---
 
 - ## 3. 조명 색상 커스텀
-<img width="220" height="612" alt="image" src="https://github.com/user-attachments/assets/f095e2b4-91e3-497b-881d-9ee5ae2dc583" />
-<img width="220" height="612" alt="image" src="https://github.com/user-attachments/assets/77752770-1eca-450f-babb-fe551cf7d6cf" />
-<img width="220" height="612" alt="image" src="https://github.com/user-attachments/assets/32825f47-b93f-494b-8a40-e4c2b58a5a04" />
+<img width="635" height="381" alt="image" src="https://github.com/user-attachments/assets/11951aae-3990-40d7-a443-563bd8c43fc3" />
+
+
+
 
 - 설정 페이지에서 현재등 / 경고등 / 위험등 3단계의 색상을 사용자가 직접 원하는 색으로 변경할 수 있습니다. 
 - 기본 색상 외에도 커스텀 색상을 지원하여 개인 취향에 맞게 알림 색상을 설정할 수 있습니다.
